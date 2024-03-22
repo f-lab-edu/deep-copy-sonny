@@ -138,6 +138,20 @@ describe("cloneDeep 함수 Set 테스트", () => {
       )
     );
   });
+
+  test("cloneDeep 함수로 복사된 Set 객체는 원본 Set 객체의 부분집합인가?", () => {
+    const originSet = new Set([1, 2, 3]);
+    const copy = cloneDeep(originSet);
+    originSet.add(4);
+
+    const results = Array.from(originSet.entries()).map(([key, _]) =>
+      copy.has(key)
+    );
+
+    console.log({ results });
+
+    expect(results).toEqual([true, true, true, false]);
+  });
 });
 
 describe("cloneDeep 함수 Date 테스트", () => {
