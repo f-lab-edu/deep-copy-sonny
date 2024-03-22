@@ -129,7 +129,7 @@ describe("cloneDeep 함수 Set 테스트", () => {
       Object.is(originSet, copy),
       Object.is(originSet.size, copy.size),
       Object.is(copy.has(4), false),
-      Object.is(copy.isSubsetOf(originSet), true), // copy가 originSet의 부분집합인가?
+      // Object.is(copy.isSubsetOf(originSet), true), // copy가 originSet의 부분집합인가? => node 미지원
     ];
 
     expect(results).toEqual(
