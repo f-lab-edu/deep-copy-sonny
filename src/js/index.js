@@ -28,8 +28,8 @@ const cloneDeep = (target) => {
     // 새로운 Set 객체를 생성하여 반환
     // Set.prototype.entries() 메서드는 Set 객체에 있는 각 요소에 대해 요소 자체를 가지는 새로운 Iterator 객체를 반환합니다.
     // Array.from() 메서드는 유사 배열 객체나 반복 가능한 객체를 얕게 복사해 새로운 Array 객체를 만듭니다.
-    return Array.from(target).reduce((prevSet, [key, _]) => {
-      prevSet.add(cloneDeep(key));
+    return Array.from(target).reduce((prevSet, nextSet) => {
+      prevSet.add(cloneDeep(nextSet));
       return prevSet;
     }, new Set());
   }

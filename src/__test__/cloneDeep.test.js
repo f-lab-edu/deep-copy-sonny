@@ -144,9 +144,7 @@ describe("cloneDeep 함수 Set 테스트", () => {
     const copy = cloneDeep(originSet);
     originSet.add(4);
 
-    const results = Array.from(originSet).map(([key, _]) => copy.has(key));
-
-    console.log({ results });
+    const results = Array.from(originSet).map((set) => copy.has(set));
 
     expect(results).toEqual([true, true, true, false]);
   });
