@@ -129,7 +129,7 @@ describe("cloneDeep 함수 Set 테스트", () => {
       Object.is(originSet, copy),
       Object.is(originSet.size, copy.size),
       Object.is(copy.has(4), false),
-      Object.is(copy.isSubsetOf(originSet), true), // copy가 originSet의 부분집합인가?
+      // Object.is(copy.isSubsetOf(originSet), true), // copy가 originSet의 부분집합인가? => node 미지원
     ];
 
     expect(results).toEqual(
@@ -137,6 +137,16 @@ describe("cloneDeep 함수 Set 테스트", () => {
         index === results.length - 1 ? true : false
       )
     );
+  });
+
+  test("cloneDeep 함수로 복사된 Set 객체는 원본 Set 객체의 부분집합인가?", () => {
+    const originSet = new Set([1, 2, 3]);
+    const copy = cloneDeep(originSet);
+    originSet.add(4);
+
+    const results = Array.from(originSet).map((set) => copy.has(set));
+
+    expect(results).toEqual([true, true, true, false]);
   });
 });
 
