@@ -187,3 +187,19 @@ describe("cloneDeep 함수 regExp 테스트", () => {
     expect(results).toEqual([false, true, true]);
   });
 });
+
+describe("cloneDeep 함수 null, undefined 테스트", () => {
+  test("cloneDeep 함수는 null, undefined를 깊은 복사하는가?", () => {
+    const nullCopy = cloneDeep(null);
+    const undefinedCopy = cloneDeep(undefined);
+
+    const results = [
+      Object.is(nullCopy, null),
+      Object.is(undefinedCopy, undefined),
+    ];
+
+    expect(results).toEqual([true, true]);
+  });
+});
+
+// TODO: 사용자 정의 객체에 대한 테스트 코드 작성
